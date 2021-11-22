@@ -41,6 +41,8 @@ class Parser:
 
     def grammar_from_file(self, grammar):
         self.grammar = grammar_converter.convert_grammar(grammar_converter.read_grammar(grammar))
+        cnftofile = "\n".join([str(elem) for elem in self.grammar])
+        open('cnf.txt', 'w').write(cnftofile)
 
     def grammar_from_string(self, grammar):
         self.grammar = grammar_converter.convert_grammar([x.replace("->", "").split() for x in grammar.split("\n")])
